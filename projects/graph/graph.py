@@ -111,6 +111,7 @@ class Graph:
         starting_vertex to destination_vertex in
         depth-first order.
         """
+        path = []
         stack = Stack()
         visited = set()
         stack.push(starting_vertex)
@@ -118,11 +119,12 @@ class Graph:
             vertex = stack.pop()
             if vertex not in visited:
                 visited.add(vertex)
-                print(vertex)
+                path.append(vertex)
                 if vertex == destination_vertex:
                     break
                 for next_vert in self.vertices[vertex]:
                     stack.push(next_vert)
+        return path
 
 
 if __name__ == '__main__':
