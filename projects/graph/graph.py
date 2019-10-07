@@ -30,6 +30,7 @@ class Graph:
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
+        print("")
         # Create a queue
         q = Queue()
         # Create list of visited nodes
@@ -43,7 +44,7 @@ class Graph:
         # If not visited
             if vertex not in visited:
                 visited.add(vertex)
-                print(vertex)
+                print(vertex, end=" ")
         #     Mark as visited
         #     Get adjacent edges and add to list
                 for next_vert in self.vertices[vertex]:
@@ -62,7 +63,7 @@ class Graph:
             vertex = stack.pop()
             if vertex not in visited:
                 visited.add(vertex)
-                print(vertex)
+                print(vertex, end=" ")
                 for next_vert in self.vertices[vertex]:
                     stack.push(next_vert)
 
@@ -74,7 +75,7 @@ class Graph:
         """
         if visited is None:
             visited = set()
-        print(starting_vertex)
+        print(starting_vertex, end=" ")
         visited.add(starting_vertex)
 
         for next_rec in self.vertices[starting_vertex]:
@@ -87,6 +88,7 @@ class Graph:
         starting_vertex to destination_vertex in
         breath-first order.
         """
+        print("")
         q = Queue()
         visited = set()
         q.enqueue([starting_vertex])
