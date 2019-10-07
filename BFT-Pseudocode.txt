@@ -1,0 +1,9 @@
+Create a queue
+Create list of visited nodes
+Put starting node in the queue
+While: queue not empty
+Pop first node out of queue
+If not visited
+     Mark as visited
+     Get adjacent edges and add to list
+Goto top of loop

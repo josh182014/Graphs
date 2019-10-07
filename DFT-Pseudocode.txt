@@ -1,0 +1,8 @@
+Make a stack
+Make visited list
+Add first node to stack
+While stack not empty:
+Pop top item
+if not visited:
+    Mark as visited
+    Get adjacent and add to stack
