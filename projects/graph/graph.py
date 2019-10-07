@@ -66,13 +66,20 @@ class Graph:
                 for next_vert in self.vertices[vertex]:
                     stack.push(next_vert)
 
-    def dft_recursive(self, starting_vertex):
+    def dft_recursive(self, starting_vertex, visited=None):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
         This should be done using recursion.
         """
-        pass  # TODO
+        if visited is None:
+            visited = set()
+        print(starting_vertex)
+        visited.add(starting_vertex)
+
+        for next_rec in self.vertices[starting_vertex]:
+            if next_rec not in visited:
+                self.dft_recursive(next_rec, visited)
 
     def bfs(self, starting_vertex, destination_vertex):
         """
@@ -80,7 +87,23 @@ class Graph:
         starting_vertex to destination_vertex in
         breath-first order.
         """
-        pass  # TODO
+        q = Queue()
+        visited = set()
+        q.enqueue([starting_vertex])
+
+        while q.size() > 0:
+            path = q.dequeue()
+            vertex = path[-1]
+
+            if vertex == destination_vertex:
+                return path
+
+            if vertex not in visited:
+                visited.add(vertex)
+                for neighbor in self.vertices[vertex]:
+                    path_copy = list(path)
+                    path_copy.append(neighbor)
+                    q.enqueue(path_copy)
 
     def dfs(self, starting_vertex, destination_vertex):
         """
@@ -88,7 +111,18 @@ class Graph:
         starting_vertex to destination_vertex in
         depth-first order.
         """
-        pass  # TODO
+        stack = Stack()
+        visited = set()
+        stack.push(starting_vertex)
+        while stack.size() > 0:
+            vertex = stack.pop()
+            if vertex not in visited:
+                visited.add(vertex)
+                print(vertex)
+                if vertex == destination_vertex:
+                    break
+                for next_vert in self.vertices[vertex]:
+                    stack.push(next_vert)
 
 
 if __name__ == '__main__':
